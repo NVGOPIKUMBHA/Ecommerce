@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OTP Verification</title>
+    <style>
+        /* Use a universal selector to apply some basic styles to all elements */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+    
+        /* Use an id selector to style the home div */
+        #home {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+    
+        /* Use a type selector to style the h1 element */
+        h1 {
+            color: #333;
+            font-family: Arial, sans-serif;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+    
+        /* Use a type selector to style the p element */
+        p {
+            color: #666;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+    
+        /* Use a type selector to style the form element */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        /* Use a type selector to style the label element */
+        label {
+            color: #333;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    
+        /* Use a type selector to style the input element */
+        input {
+            width: 80%;
+            height: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding-left: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+    
+        /* Use a type selector to style the button element */
+        button {
+            width: 40%;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    
+        /* Use a pseudo-class selector to style the button element when hovered */
+        button:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Home page -->
+    <div id="home">
+        <h1>Welcome to the OTp Verification </h1>
+        <p>Please enter your otp to verify it.</p>
+        <form action="/verify-otp" method="POST">
+            <label for="email">otp:</label>
+            <input type="text" id="email" name="otp" required>
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+  :
+</body>
+</html>

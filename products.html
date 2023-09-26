@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="ecom.css">
+   <title>products</title>
+   <style>
+    body {
+       font-family: Arial, sans-serif;
+       margin: 0;
+       padding: 0;
+    }
+
+    .container {
+       max-width: 800px;
+       margin: 0 auto;
+       padding: 20px;
+    }
+
+    .header {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       margin-bottom: 20px;
+    }
+
+    .logo {
+       font-size: 24px;
+       font-weight: bold;
+    }
+
+    .logout-button {
+       padding: 8px 16px;
+       background-color: #f44336;
+       color: #fff;
+       border: none;
+       border-radius: 4px;
+       font-size: 14px;
+       cursor: pointer;
+    }
+
+    .products {
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
+       grid-gap: 20px;
+       margin-bottom: 20px;
+    }
+
+    .product {
+       text-align: center;
+    }
+
+    .product-image {
+       width: 100%;
+       max-height: 200px;
+       object-fit: cover;
+       border-radius: 4px;
+       margin-bottom: 10px;
+    }
+
+    .product-name {
+       font-size: 18px;
+       font-weight: bold;
+       margin-bottom: 5px;
+    }
+
+    .product-price {
+       font-size: 14px;
+       margin-bottom: 10px;
+    }
+
+    .add-to-cart-button {
+       padding: 8px 16px;
+       background-color: #4caf50;
+       color: #fff;
+       border: none;
+       border-radius: 4px;
+       font-size: 14px;
+       cursor: pointer;
+    }
+
+    .cart {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       padding: 10px;
+       background-color: #f5f5f5;
+       border-radius: 4px;
+    }
+
+    .cart-items,
+    .balance {
+       font-size: 14px;
+       font-weight: bold;
+    }
+
+    .checkout-button {
+       padding: 8px 16px;
+       background-color: #2196f3;
+       color: #fff;
+       border: none;
+       border-radius: 4px;
+       font-size: 14px;
+       cursor: pointer;
+    }
+ </style>
+</head>
+
+
+<body>
+   <div class="container">
+   
+       <!-- Add a header section with a logo and a logout button -->
+       <div class="header">
+           
+          <div class="logo">Ecommerce Web Page</div>
+   
+          <!-- Add an onclick attribute to the logout button to call a logout function -->
+          <a href="/logout"><button class="logout-button">Logout</button></a>
+   
+       </div>
+   
+       <!-- Add a products section with five items with images, names, prices and add to cart buttons -->
+       <div class="products">
+   
+          <!-- Add an onclick attribute to each add to cart button to call an add_to_cart function with the product price as an argument -->
+          <div class="APPLES">
+              <img src="https://www.stellantis.com/content/dam/stellantis-corporate/brands/jeep/Brand-Jeep-img-SX.jpg" alt="Item 1" class="product-image">
+              <div class="apples">jeep</div>
+              <div class="product-price">$10</div>
+              <button class="add-to-cart-button" onclick="add_to_cart(10)">Add to Cart</button>
+          </div>
+   
+          <div class="KIWI">
+              <img src="https://stimg.cardekho.com/images/car-images/large/Tata/Harrier/9850/1681887806112/front-left-side-47.jpg" alt="Item 2" class="product-image">
+              <div class="KIWI">car</div>
+              <div class="product-price">20</div>
+              <button class="add-to-cart-button" onclick="add_to_cart(20)">Add to Cart</button>
+          </div>
+       </div>
+   
+       <!-- Add a cart section with the number of items in the cart, the balance and a checkout button -->
+       <div class="cart">
+   
+           <!-- Add a span element with an id of cart-items to display the number of items in the cart -->
+           <div class="cart-items">Items in Cart: <span id="cart-items">0</span></div>
+   
+           <!-- Add a span element with an id of balance to display the balance -->
+           <div class="cart-items">Balance: $<span id="balance">1000</span></div>
+   
+           <!-- Add an onclick attribute to the checkout button to call a checkout function -->
+           <button class="checkout-button" onclick="checkout()">Checkout</button>
+   
+       </div>
+   </div>
+   
+   <!-- Add a script tag to define the functions for the web page functionality -->
+   <script>
+   
+       // Define a variable to store the number of items in the cart
+       var items = 0;
+   
+       // Define a variable to store the balance
+       var balance = 1000;
+   
+       // Define a function that adds an item to the cart and deducts the price from the balance
+       function add_to_cart(price) {
+   
+           // Check if the balance is enough to buy the item
+           if (balance >= price) {
+   
+               // Increment the items variable by one
+               items++;
+   
+               // Deduct the price from the balance
+               balance -= price;
+   
+               // Update the cart-items element with the new value of items
+               document.getElementById("cart-items").innerHTML = items;
+   
+               // Update the balance element with the new value of balance
+               document.getElementById("balance").innerHTML = balance;
+   
+           } else {
+   
+               // Display an alert message that the balance is not enough
+               window.alert("You don't have enough balance to buy this item.");
+           }
+   
+       }
+   
+       // Define a function that logs out the user and redirects to another webpage
+       function logout() {
+   
+           // Display an alert message that the user is logged out
+           window.alert("You are logged out.");
+   
+           // Redirect to another webpage using the window.location.href property
+           window.location.href = "register.html";
+   
+       }
+   
+       // Define a function that checks out the user and displays a confirmation message
+       function checkout() {
+   
+           // Check if there are any items in the cart
+           if (items > 0) {
+   
+               // Display an alert message that the checkout is successful and show the remaining balance
+               window.alert("You have successfully checked out. Your remaining balance is $" + balance + ".");
+   
+               // Reset the items variable to zero
+               items = 0;
+
+               // Update the cart-items element with the new value of items
+               document.getElementById("cart-items").innerHTML = items;
+
+               amount = document.getElementById("balance").innerHTML
+
+               
+   
+           } else {
+   
+               // Display an alert message that there are no items in the cart
+               window.alert("You have no items in your cart.");
+           }
+   
+       }
+   
+   </script>
+-    
+   
+   
+</body>
+<script>
+   alert("login completed")
+</script>
+</html>
